@@ -2,6 +2,7 @@
 #include <cmath>
 #include <iomanip>
 #include <random>
+#include <stdexcept>
 using std::cout;
 using std::endl;
 class Line {
