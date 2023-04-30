@@ -66,9 +66,10 @@ void Line::findCross() {
 double validateInput() {
     static short count=0;
     switch(count){
-        case 0: {cout<<"Enter A coefficient:"; break;}
-        case 1: {cout<<"Enter B coefficient:"; break;}
-        case 2: {cout<<"Enter C coefficient:"; break;}
+        case 0: {cout<<"Enter A coefficient[Max = 1e+15]:"; break;}
+        case 1: {cout<<"Enter B coefficient[Max = 1e+15]:"; break;}
+        case 2: {cout<<"Enter C coefficient[Max = 1e+15]:"; break;}
+        default:break;
     }
     std::string number;
     double value;
@@ -80,6 +81,9 @@ double validateInput() {
             value = std::stod(number, &pos);
             if (pos < number.size()) {
                 throw std::invalid_argument("Symbols after the value");
+            }
+            if (pos >=16 ) {
+                throw std::invalid_argument("Excessively big number");
             }
             valid = true;
         } catch (std::exception& exp) {
