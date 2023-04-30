@@ -76,10 +76,11 @@ double validateInput() {
     do {
         try {
             std::getline(std::cin, number);
-            if (number.size() > std::to_string(std::stod(number)).size()) {
+            size_t pos;
+            value = std::stod(number, &pos);
+            if (pos < number.size()) {
                 throw std::invalid_argument("Symbols after the value");
             }
-            value = std::stod(number);
             valid = true;
         } catch (std::exception& exp) {
             std::cerr << "Error: " << exp.what() << ". Invalid input. Try again!" << std::endl;
